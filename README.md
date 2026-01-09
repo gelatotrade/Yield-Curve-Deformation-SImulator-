@@ -2,9 +2,9 @@
 
 A Python toolkit for simulating yield curve movements and analyzing fixed income risk metrics. Supports parallel shifts, steepening, flattening, twists, and butterfly deformations with comprehensive duration, DV01, and convexity calculations.
 
-## Detaillierte Skript-Dokumentation und Visualisierungen
+## Comprehensive Documentation and Visualizations
 
-Dieses Toolkit simuliert Zinsstrukturkurven-Bewegungen und berechnet umfassende Risikometriken für festverzinsliche Wertpapiere. Die folgenden Visualisierungen und Erklärungen zeigen, wie verschiedene Deformationen der Zinskurve funktionieren und welche Auswirkungen sie auf Anleihen und Portfolios haben.
+This toolkit simulates yield curve movements and calculates comprehensive risk metrics for fixed income securities. The following visualizations and explanations demonstrate how various yield curve deformations function and their impact on bonds and portfolios.
 
 ## Features
 
@@ -39,128 +39,128 @@ Dieses Toolkit simuliert Zinsstrukturkurven-Bewegungen und berechnet umfassende 
   - Duration contribution analysis
   - Scenario P&L attribution
 
-### Visualisierungen und Interpretationen
+### Visualizations and Interpretations
 
-#### 1. Basis-Zinskurve (Base Yield Curve)
+#### 1. Base Yield Curve
 
 ![Base Yield Curve](docs/images/01_base_curve.png)
 
-**Was zeigt diese Visualisierung:**
-- Die Basis-Zinskurve zeigt die Renditen für verschiedene Laufzeiten von 3 Monaten bis 30 Jahren
-- Rote Punkte sind die ursprünglichen Marktdaten
-- Die blaue Linie ist die kubische Spline-Interpolation zwischen den Datenpunkten
+**What This Visualization Shows:**
+- The base yield curve displays yields across various maturities from 3 months to 30 years
+- Red points represent original market data
+- The blue line is the cubic spline interpolation between data points
 
 **Interpretation:**
-- Die Kurve ist nahezu flach mit einer leicht inversen Form im kurzen Bereich (5.25% bei 3M → 4.00% bei 5Y)
-- Die lange Ende steigt leicht an (4.00% bei 5Y → 4.60% bei 30Y)
-- Der 2s10s Spread beträgt -0.25 bps, was auf eine sehr flache Kurve hinweist
-- Diese Form deutet auf Markterwartungen stabiler oder sinkender Zinsen hin
+- The curve is nearly flat with a slightly inverted shape in the short end (5.25% at 3M → 4.00% at 5Y)
+- The long end rises slightly (4.00% at 5Y → 4.60% at 30Y)
+- The 2s10s spread is -0.25 bps, indicating a very flat curve
+- This shape suggests market expectations of stable or declining interest rates
 
 ---
 
-#### 2. Parallele Verschiebung (Parallel Shift)
+#### 2. Parallel Shift
 
 ![Parallel Shift](docs/images/02_parallel_shift.png)
 
-**Was zeigt diese Visualisierung:**
-- Parallele Verschiebungen der gesamten Zinskurve um verschiedene Beträge (-50, -25, +25, +50 Basispunkte)
-- Alle Laufzeiten werden um den gleichen Betrag verschoben
+**What This Visualization Shows:**
+- Parallel shifts of the entire yield curve by various amounts (-50, -25, +25, +50 basis points)
+- All maturities are shifted by the same amount
 
 **Interpretation:**
-- Grün (-50/-25 bps): Sinkende Zinsen → Anleihepreise steigen → Positiv für Anleiheinhaber
-- Orange/Rot (+25/+50 bps): Steigende Zinsen → Anleihepreise fallen → Negativ für Anleiheinhaber
-- Dies simuliert eine Zentralbankpolitik, die alle Zinsen gleichmäßig beeinflusst
-- Relevant für Duration- und DV01-Berechnungen
+- Green (-50/-25 bps): Declining rates → Bond prices rise → Positive for bondholders
+- Orange/Red (+25/+50 bps): Rising rates → Bond prices fall → Negative for bondholders
+- This simulates central bank policy affecting all rates uniformly
+- Relevant for duration and DV01 calculations
 
 ---
 
-#### 3. Versteilerung und Abflachung (Steepening & Flattening)
+#### 3. Steepening & Flattening
 
 ![Steepening & Flattening](docs/images/03_steepening_flattening.png)
 
-**Was zeigt diese Visualisierung:**
-- **Links (Steepening)**: Kurze Zinsen fallen, lange Zinsen steigen → Kurve wird steiler
-- **Rechts (Flattening)**: Kurze Zinsen steigen, lange Zinsen fallen → Kurve wird flacher
+**What This Visualization Shows:**
+- **Left (Steepening)**: Short rates decline, long rates rise → Curve steepens
+- **Right (Flattening)**: Short rates rise, long rates decline → Curve flattens
 
-**Interpretation der Versteilerung (Steepening):**
-- Die Zinskurve wird steiler, der Spread zwischen kurzen und langen Zinsen nimmt zu
-- Typisch in wirtschaftlichen Erholungsphasen
-- Short-Dated Bonds profitieren, Long-Dated Bonds verlieren
-- Banken profitieren (können kurzfristig günstig leihen, langfristig teuer verleihen)
+**Steepening Interpretation:**
+- The yield curve steepens as the spread between short and long rates increases
+- Typical during economic recovery phases
+- Short-dated bonds benefit, long-dated bonds underperform
+- Banks profit (borrow short-term cheaply, lend long-term at higher rates)
 
-**Interpretation der Abflachung (Flattening):**
-- Die Zinskurve wird flacher, der Spread nimmt ab
-- Kann auf eine bevorstehende Rezession hindeuten
-- Long-Dated Bonds profitieren relativ zu Short-Dated Bonds
-- Typisch wenn Zentralbank Zinsen erhöht (kurzes Ende steigt schneller)
+**Flattening Interpretation:**
+- The yield curve flattens as the spread decreases
+- May signal an impending recession
+- Long-dated bonds benefit relative to short-dated bonds
+- Typical when central banks raise rates (short end rises faster)
 
 ---
 
-#### 4. Twist-Deformationen
+#### 4. Twist Deformations
 
 ![Twist](docs/images/04_twist.png)
 
-**Was zeigt diese Visualisierung:**
-- Unabhängige Bewegungen des kurzen und langen Endes der Zinskurve
-- Pivot-Punkt bei 5 Jahren (graue gestrichelte Linie)
-- Verschiedene Szenarien: kurzes Ende ↓/↑ während langes Ende ↑/↓
+**What This Visualization Shows:**
+- Independent movements of the short and long ends of the yield curve
+- Pivot point at 5 years (gray dashed line)
+- Various scenarios: short end ↓/↑ while long end ↑/↓
 
 **Interpretation:**
-- **Rot (Short -20, Long +30)**: Aggressivste Versteilerung → Kurzes Ende fällt stark, langes Ende steigt stark
-- **Grün (Short +20, Long -30)**: Aggressivste Abflachung → Umgekehrte Bewegung
-- **Lila (Short -30, Long +50)**: Extreme Versteilerung mit sehr starken Bewegungen
-- Twist-Szenarien sind realistisch bei gemischten Zentralbank-Signalen oder Änderungen in Inflationserwartungen
+- **Red (Short -20, Long +30)**: Most aggressive steepening → Short end falls sharply, long end rises sharply
+- **Green (Short +20, Long -30)**: Most aggressive flattening → Opposite movement
+- **Purple (Short -30, Long +50)**: Extreme steepening with very strong movements
+- Twist scenarios are realistic during mixed central bank signals or changes in inflation expectations
 
 ---
 
-#### 5. Butterfly-Spreads
+#### 5. Butterfly Spreads
 
 ![Butterfly](docs/images/05_butterfly.png)
 
-**Was zeigt diese Visualisierung:**
-- **Links (Positive Butterfly)**: Flügel steigen, Bauch sinkt → Kurve wird konvexer
-- **Rechts (Negative Butterfly)**: Flügel fallen, Bauch steigt → Kurve wird konkaver
+**What This Visualization Shows:**
+- **Left (Positive Butterfly)**: Wings rise, belly falls → Curve becomes more convex
+- **Right (Negative Butterfly)**: Wings fall, belly rises → Curve becomes more concave
 
-**Interpretation Positive Butterfly:**
-- Kurz- und Langfristseite steigen, Mittelfristbereich fällt
-- Die Kurve zeigt mehr Krümmung (höhere Curvature)
-- Mittelfristige Anleihen (5-10Y) profitieren relativ
-- Trading-Strategie: Long mittlere Laufzeiten, Short kurze und lange Laufzeiten
+**Positive Butterfly Interpretation:**
+- Short and long-term ends rise, intermediate maturities fall
+- The curve exhibits increased curvature
+- Intermediate maturity bonds (5-10Y) benefit relatively
+- Trading strategy: Long intermediate maturities, short short and long maturities
 
-**Interpretation Negative Butterfly:**
-- Mittelfristseite steigt, Flügel fallen
-- Die Kurve wird glatter
-- Kurz- und langfristige Anleihen profitieren
-- Trading-Strategie: Short mittlere Laufzeiten, Long kurze und lange Laufzeiten
+**Negative Butterfly Interpretation:**
+- Intermediate maturities rise, wings fall
+- The curve becomes smoother
+- Short and long-term bonds benefit
+- Trading strategy: Short intermediate maturities, long short and long maturities
 
 ---
 
-#### 6. Bear/Bull Szenarien
+#### 6. Bear/Bull Scenarios
 
 ![Bear Bull Scenarios](docs/images/06_bear_bull_scenarios.png)
 
-**Was zeigt diese Visualisierung:**
-Vier makroökonomische Szenarien:
+**What This Visualization Shows:**
+Four macroeconomic scenarios:
 
-**Bear Steepener (oben links):**
-- Langes Ende steigt (+40 bps)
-- Kurzes Ende bleibt stabil
-- **Interpretation**: Inflationserwartungen steigen, Wirtschaft überhitzt, lange Anleihen werden verkauft
+**Bear Steepener (top left):**
+- Long end rises (+40 bps)
+- Short end remains stable
+- **Interpretation**: Rising inflation expectations, overheating economy, long-term bonds are sold off
 
-**Bull Steepener (oben rechts):**
-- Kurzes Ende fällt (-50 bps)
-- Langes Ende bleibt stabil
-- **Interpretation**: Zentralbank senkt Zinsen (Rezessionsangst), aber lange Zinsen bleiben stabil
+**Bull Steepener (top right):**
+- Short end falls (-50 bps)
+- Long end remains stable
+- **Interpretation**: Central bank cuts rates (recession concerns), but long rates remain stable
 
-**Bear Flattener (unten links):**
-- Kurzes Ende steigt (+30 bps)
-- Langes Ende bleibt stabil
-- **Interpretation**: Zentralbank erhöht Zinsen aggressiv zur Inflationsbekämpfung
+**Bear Flattener (bottom left):**
+- Short end rises (+30 bps)
+- Long end remains stable
+- **Interpretation**: Central bank aggressively raises rates to combat inflation
 
-**Bull Flattener (unten rechts):**
-- Langes Ende fällt (-30 bps)
-- Kurzes Ende bleibt stabil
-- **Interpretation**: Rezessionserwartungen, Flight-to-Quality in lange Staatsanleihen
+**Bull Flattener (bottom right):**
+- Long end falls (-30 bps)
+- Short end remains stable
+- **Interpretation**: Recession expectations, flight-to-quality into long-term government bonds
 
 ---
 
@@ -168,142 +168,142 @@ Vier makroökonomische Szenarien:
 
 ![Key Rate Durations](docs/images/07_key_rate_durations.png)
 
-**Was zeigt diese Visualisierung:**
-- Sensitivität verschiedener Anleihen gegenüber Zinsänderungen an spezifischen Laufzeit-Punkten
-- Vier verschiedene Anleihen: 2Y, 5Y, 10Y, 30Y
+**What This Visualization Shows:**
+- Sensitivity of different bonds to rate changes at specific maturity points
+- Four different bonds: 2Y, 5Y, 10Y, 30Y
 
 **Interpretation:**
-- **2Y Bond (blau)**: Höchste Sensitivität bei 2Y Zinsen, kaum Sensitivität bei langen Zinsen
-- **5Y Bond (grün)**: Breiter verteilt, Maximum bei 5Y
-- **10Y Bond (rot)**: Sehr hohe Konzentration bei 10Y (Balken ~7.0), dominierender Faktor
-- **30Y Bond (lila)**: Würde extreme Sensitivität bei 30Y zeigen (nicht vollständig sichtbar wegen Skalierung)
+- **2Y Bond (blue)**: Highest sensitivity at 2Y rates, minimal sensitivity at long maturities
+- **5Y Bond (green)**: Broadly distributed, maximum at 5Y
+- **10Y Bond (red)**: Very high concentration at 10Y (bar ~7.0), dominant factor
+- **30Y Bond (purple)**: Would show extreme sensitivity at 30Y (not fully visible due to scaling)
 
-**Praktische Bedeutung:**
-- Zeigt, welche Teile der Zinskurve das größte Risiko für eine Position darstellen
-- Wichtig für Hedging-Strategien: Man kann gezielt Absicherungen an den relevanten Key Rates platzieren
-- Portfolio-Manager nutzen dies zur Konstruktion von Immunisierungsstrategien
+**Practical Significance:**
+- Identifies which parts of the yield curve present the greatest risk for a position
+- Critical for hedging strategies: allows targeted hedges at relevant key rates
+- Portfolio managers use this for constructing immunization strategies
 
 ---
 
-#### 8. Szenario-Analyse
+#### 8. Scenario Analysis
 
 ![Scenario Analysis](docs/images/08_scenario_analysis.png)
 
-**Was zeigt diese Visualisierung:**
-- Preisänderungen einer 10-jährigen Anleihe (4% Kupon) unter verschiedenen Zinsszenarien
-- Links: Absolute Preisänderung in Dollar
-- Rechts: Prozentuale Preisänderung
+**What This Visualization Shows:**
+- Price changes for a 10-year bond (4% coupon) under various rate scenarios
+- Left: Absolute price change in dollars
+- Right: Percentage price change
 
-**Interpretation der Szenarien:**
-- **Parallel -50 bps** (grün): Größter Gewinn (~+$20.55, +2.1%) → Zinsen fallen stark
-- **Parallel -25 bps** (grün): Moderater Gewinn → Zinsen fallen moderat
-- **Parallel +25 bps** (rot): Moderater Verlust (~-$20.08, -2.05%) → Zinsen steigen moderat
-- **Parallel +50 bps** (rot): Größerer Verlust → Zinsen steigen stark
-- **Steepening** (rot): Verlust (~-$34, -3.48%) → Lange Zinsen steigen stark, trifft 10Y Bond hart
-- **Flattening** (grün): Gewinn (~+$35.74, +3.66%) → Lange Zinsen fallen, sehr positiv für 10Y Bond
-- **Butterfly** (rot): Moderater Verlust (~-$16.48, -1.69%) → Mittlere Laufzeiten leiden
+**Scenario Interpretation:**
+- **Parallel -50 bps** (green): Largest gain (~+$20.55, +2.1%) → Rates fall sharply
+- **Parallel -25 bps** (green): Moderate gain → Rates fall moderately
+- **Parallel +25 bps** (red): Moderate loss (~-$20.08, -2.05%) → Rates rise moderately
+- **Parallel +50 bps** (red): Larger loss → Rates rise sharply
+- **Steepening** (red): Loss (~-$34, -3.48%) → Long rates rise sharply, hits 10Y bond hard
+- **Flattening** (green): Gain (~+$35.74, +3.66%) → Long rates fall, very positive for 10Y bond
+- **Butterfly** (red): Moderate loss (~-$16.48, -1.69%) → Intermediate maturities suffer
 
-**Praktische Bedeutung:**
-- Zeigt das asymmetrische Risiko: Flattening bietet mehr Upside als Steepening Downside
-- Wichtig für Risikomanagement und Value-at-Risk Berechnungen
-- Hilft bei der Entscheidung, welche Positionen zu hedgen sind
+**Practical Significance:**
+- Demonstrates asymmetric risk: Flattening offers more upside than steepening downside
+- Critical for risk management and Value-at-Risk calculations
+- Guides hedging decisions for specific positions
 
 ---
 
-#### 9. Duration und Konvexität nach Laufzeit
+#### 9. Duration and Convexity by Maturity
 
 ![Duration & Convexity](docs/images/09_duration_convexity.png)
 
-**Was zeigt diese Visualisierung:**
-Drei zentrale Risikometriken über verschiedene Laufzeiten:
+**What This Visualization Shows:**
+Three key risk metrics across different maturities:
 
-**Modified Duration (links):**
-- Steigt von ~1 Jahr (bei 1Y Bond) auf ~15 Jahre (bei 30Y Bond)
-- Nicht-lineares Wachstum: Flacher werdend bei längeren Laufzeiten
-- **Interpretation**: Duration misst die prozentuale Preisänderung bei 1% Zinsänderung
-  - 10Y Bond: ~8.14 Duration → Bei +1% Zinsen fällt Preis um ~8.14%
-  - 30Y Bond: ~15 Duration → Bei +1% Zinsen fällt Preis um ~15%
+**Modified Duration (left):**
+- Increases from ~1 year (1Y bond) to ~15 years (30Y bond)
+- Non-linear growth: flattens at longer maturities
+- **Interpretation**: Duration measures percentage price change for 1% rate change
+  - 10Y Bond: ~8.14 duration → At +1% rates, price falls ~8.14%
+  - 30Y Bond: ~15 duration → At +1% rates, price falls ~15%
 
-**Convexity (Mitte):**
-- Steigt exponentiell von ~5 (bei 1Y) auf ~350 (bei 30Y)
-- Stark beschleunigtes Wachstum bei langen Laufzeiten
-- **Interpretation**: Convexity misst die Krümmung der Preis-Rendite-Beziehung
-  - Positive Convexity ist vorteilhaft: Preise steigen mehr bei fallenden Zinsen als sie bei steigenden Zinsen fallen
-  - Je höher die Convexity, desto besser die asymmetrische Payoff-Struktur
+**Convexity (center):**
+- Rises exponentially from ~5 (1Y) to ~350 (30Y)
+- Strongly accelerated growth at long maturities
+- **Interpretation**: Convexity measures the curvature of the price-yield relationship
+  - Positive convexity is advantageous: prices rise more when rates fall than they decline when rates rise
+  - Higher convexity provides better asymmetric payoff structure
 
-**DV01 (rechts):**
+**DV01 (right):**
 - Dollar Value of 01 Basis Point
-- Steigt von ~$0.10 (bei 1Y) auf ~$1.50 (bei 30Y)
-- **Interpretation**: Direkter Dollar-Verlust bei 1 Basispunkt Zinsanstieg
-  - 10Y Bond: ~$0.81 DV01 → Bei +1bp verliert die $1000 Anleihe $0.81
-  - 30Y Bond: ~$1.50 DV01 → Höheres absolutes Risiko
+- Increases from ~$0.10 (1Y) to ~$1.50 (30Y)
+- **Interpretation**: Direct dollar loss from 1 basis point rate increase
+  - 10Y Bond: ~$0.81 DV01 → At +1bp, the $1000 bond loses $0.81
+  - 30Y Bond: ~$1.50 DV01 → Higher absolute risk
 
-**Praktische Bedeutung:**
-- Portfolio-Manager nutzen diese Metriken zur Risikosteuerung
-- Lange Anleihen haben höheres Zinsrisiko aber auch höhere Convexity-Vorteile
-- Trade-off zwischen Rendite-Pick-up und Zinsrisiko
+**Practical Significance:**
+- Portfolio managers use these metrics for risk control
+- Long bonds carry higher interest rate risk but also higher convexity benefits
+- Trade-off between yield pickup and interest rate risk
 
 ---
 
-#### 10. Portfolio-Analyse
+#### 10. Portfolio Analysis
 
 ![Portfolio Analysis](docs/images/10_portfolio_analysis.png)
 
-**Was zeigt diese Visualisierung:**
-Ein Portfolio mit vier Positionen (Gesamtwert ~$504K):
-- 100x 2Y Bonds (3.5% Kupon)
-- 200x 5Y Bonds (4.0% Kupon)
-- 150x 10Y Bonds (4.5% Kupon)
-- 50x 30Y Bonds (5.0% Kupon)
+**What This Visualization Shows:**
+A portfolio with four positions (Total value ~$504K):
+- 100x 2Y Bonds (3.5% coupon)
+- 200x 5Y Bonds (4.0% coupon)
+- 150x 10Y Bonds (4.5% coupon)
+- 50x 30Y Bonds (5.0% coupon)
 
-**Links - Duration Contribution:**
-- **2Y Bond**: 0.37 Duration (5.9% des Gesamt-Risikos) → Geringster Beitrag
-- **5Y Bond**: 1.78 Duration (28.4%) → Zweitgrößter Beitrag
-- **10Y Bond**: 2.43 Duration (38.8%) → Größter Risikobeitrag trotz mittlerer Gewichtung
-- **30Y Bond**: 1.68 Duration (26.9%) → Hohe Duration aber niedrige Stückzahl
-
-**Interpretation:**
-- Die 10Y Position dominiert das Zinsrisiko des Portfolios
-- Trotz kleinerer Stückzahl als 5Y Bonds hat 10Y mehr als doppelte Duration-Contribution
-- Portfolio ist "bullet"-artig um 10Y zentriert
-
-**Rechts - Scenario P&L:**
-Verschiedene Zinsszenarien und ihre Portfolio-Auswirkungen:
-- **Parallel +50** (rot): ~-$10.7K Verlust → Steigende Zinsen schaden Portfolio
-- **Parallel -50** (grün): ~+$10.9K Gewinn → Fallende Zinsen helfen Portfolio
-- **Steepening** (rot): ~-$7.7K Verlust → Long-End steigt, schadet 10Y und 30Y Positionen stark
-- **Flattening** (grün): ~+$8.0K Gewinn → Long-End fällt, hilft 10Y und 30Y Positionen
-- **Bear Steep** (rot): ~-$3.7K Verlust → Moderater Verlust durch steigende lange Zinsen
-- **Bull Flat** (grün): ~+$2.7K Gewinn → Moderater Gewinn durch fallende lange Zinsen
+**Left - Duration Contribution:**
+- **2Y Bond**: 0.37 duration (5.9% of total risk) → Smallest contribution
+- **5Y Bond**: 1.78 duration (28.4%) → Second largest contribution
+- **10Y Bond**: 2.43 duration (38.8%) → Largest risk contribution despite moderate weighting
+- **30Y Bond**: 1.68 duration (26.9%) → High duration but low quantity
 
 **Interpretation:**
-- Portfolio ist lang positioniert (profitiert von fallenden Zinsen)
-- Asymmetrisches Profil: Flattening bietet mehr Upside als Steepening Downside
-- Steepening ist das gefährlichste Szenario nach parallelem Zinsanstieg
-- Das Portfolio würde von einer Rezession (Bull Flattening) profitieren
+- The 10Y position dominates portfolio interest rate risk
+- Despite lower quantity than 5Y bonds, 10Y has more than double the duration contribution
+- Portfolio is "bullet"-shaped, centered around 10Y
+
+**Right - Scenario P&L:**
+Various rate scenarios and their portfolio impact:
+- **Parallel +50** (red): ~-$10.7K loss → Rising rates damage portfolio
+- **Parallel -50** (green): ~+$10.9K gain → Falling rates benefit portfolio
+- **Steepening** (red): ~-$7.7K loss → Long end rises, severely impacts 10Y and 30Y positions
+- **Flattening** (green): ~+$8.0K gain → Long end falls, benefits 10Y and 30Y positions
+- **Bear Steep** (red): ~-$3.7K loss → Moderate loss from rising long rates
+- **Bull Flat** (green): ~+$2.7K gain → Moderate gain from falling long rates
+
+**Interpretation:**
+- Portfolio is long-positioned (benefits from falling rates)
+- Asymmetric profile: Flattening offers more upside than steepening downside
+- Steepening is the most dangerous scenario after parallel rate increases
+- Portfolio would benefit from a recession (bull flattening) environment
 
 ---
 
-## Zusammenfassung: Was macht das Skript?
+## Summary: What Does the Script Do?
 
-Das `basic_usage.py` Skript demonstriert die Kernfunktionalität des Yield Curve Simulators:
+The `basic_usage.py` script demonstrates the core functionality of the Yield Curve Simulator:
 
-1. **Zinskurven-Modellierung**: Erstellt eine realistische Zinskurve mit kubischer Spline-Interpolation
-2. **Deformations-Szenarien**: Simuliert 7 verschiedene Arten von Zinskurven-Bewegungen
-3. **Einzelwert-Risikometriken**: Berechnet Duration, Convexity, DV01, Key Rate Durations für Anleihen
-4. **Szenario-Analyse**: Evaluiert Preisänderungen unter verschiedenen Zinsszenarien
-5. **Portfolio-Risiko**: Aggregiert Risikometriken über mehrere Positionen und berechnet Scenario P&L
-6. **Value-at-Risk**: Berechnet VaR und Expected Shortfall basierend auf Volatilitätsannahmen
+1. **Yield Curve Modeling**: Creates realistic yield curves with cubic spline interpolation
+2. **Deformation Scenarios**: Simulates 7 different types of yield curve movements
+3. **Individual Security Risk Metrics**: Calculates Duration, Convexity, DV01, and Key Rate Durations for bonds
+4. **Scenario Analysis**: Evaluates price changes under various rate scenarios
+5. **Portfolio Risk**: Aggregates risk metrics across multiple positions and calculates scenario P&L
+6. **Value-at-Risk**: Computes VaR and Expected Shortfall based on volatility assumptions
 
-### Hauptanwendungsfälle:
+### Primary Use Cases:
 
-- **Risk Management**: Quantifizierung von Zinsrisiken in Bond-Portfolios
-- **Trading**: Bewertung von Curve-Trading-Strategien (Steepener, Flattener, Butterfly)
-- **Hedging**: Identifikation der wichtigsten Risikoquellen durch Key Rate Durations
-- **Stresstesting**: Simulation extremer Zinsszenarien und deren Portfolio-Auswirkungen
-- **Portfolio-Konstruktion**: Optimierung der Duration- und Convexity-Profile
+- **Risk Management**: Quantification of interest rate risk in bond portfolios
+- **Trading**: Evaluation of curve trading strategies (steepeners, flatteners, butterflies)
+- **Hedging**: Identification of primary risk sources through Key Rate Durations
+- **Stress Testing**: Simulation of extreme rate scenarios and their portfolio impact
+- **Portfolio Construction**: Optimization of duration and convexity profiles
 
-Das Toolkit ist besonders wertvoll für Fixed-Income Portfolio Manager, Risikomanager und Trader, die ein tiefes Verständnis der Zinskurven-Dynamik und ihrer Auswirkungen auf Anleiheportfolios benötigen.
+The toolkit is particularly valuable for fixed income portfolio managers, risk managers, and traders who require deep understanding of yield curve dynamics and their impact on bond portfolios.
 
 ---
 
@@ -313,14 +313,14 @@ Das Toolkit ist besonders wertvoll für Fixed-Income Portfolio Manager, Risikoma
 pip install -r requirements.txt
 ```
 
-## Visualisierungen generieren
+## Generating Visualizations
 
 ```bash
 cd examples
 python visualize_curves.py
 ```
 
-Die Visualisierungen werden in `docs/images/` gespeichert.
+Visualizations are saved to `docs/images/` directory.
 
 ## Quick Start
 
